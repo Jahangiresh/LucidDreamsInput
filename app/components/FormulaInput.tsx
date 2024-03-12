@@ -39,7 +39,7 @@ const FormulaInput = () => {
         </h2>
         <div
           id="accordion-collapse-body-1"
-          className="hidden"
+          // className="hidden"
           aria-labelledby="accordion-collapse-heading-1"
         >
           <div className="py-5 px-10 border  border-gray-200 dark:border-gray-700 dark:bg-gray-900">
@@ -49,7 +49,6 @@ const FormulaInput = () => {
           </div>
         </div>
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </div>
   );
 };

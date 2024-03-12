@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 interface TagsStore {
   selectedTags: string[];
@@ -7,19 +7,19 @@ interface TagsStore {
   removeTag: (tag: string) => void;
 }
 
-export const useTagsStore = create<TagsStore>((set) => ({
+export const useTagsStore = create<TagsStore>((set: any) => ({
   selectedTags: [],
-  setSelectedTags: (tags) => set({ selectedTags: tags }),
-  addTag: (tag) => {
-    set((state) => {
+  setSelectedTags: (tags: any) => set({ selectedTags: tags }),
+  addTag: (tag: any) => {
+    set((state: any) => {
       if (!state.selectedTags.includes(tag)) {
         return { selectedTags: [...state.selectedTags, tag] };
       }
       return state;
     });
   },
-  removeTag: (tag) =>
-    set((state) => ({
-      selectedTags: state.selectedTags.filter((t) => t !== tag),
+  removeTag: (tag: any) =>
+    set((state: any) => ({
+      selectedTags: state.selectedTags.filter((t: any) => t !== tag),
     })),
 }));

@@ -3,32 +3,18 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import { useTagsStore } from "../store/tagsStore";
 import { useGetAutocompleteQuery } from "../store/api";
 
-interface TagsInputProps {
-  value: string[];
-  onChange: (value: string) => void;
-  name: string;
-  placeholder: string;
-}
-
 const TagsInput = () => {
   const [inputValue, setInputValue] = useState<string>("");
-  const { data, error, isLoading } = useGetAutocompleteQuery({ id: "yourId" });
-
-  const suggestions: string[] = [
-    "Apple",
-    "Banana",
-    "Orange",
-    "Grapes",
-    "Mango",
-  ];
+  const { data } = useGetAutocompleteQuery({
+    id: "yourId",
+  }) as any;
 
   const { selectedTags, addTag, removeTag } = useTagsStore();
 
   useEffect(() => {
-    console.log(data);
-
     setInputValue("");
   }, [selectedTags]);
+
   const changeHandler = (newValue: string) => {
     setInputValue(newValue);
   };
@@ -53,7 +39,7 @@ const TagsInput = () => {
 
   const finishEditing = () => {
     if (editableTag !== null) {
-      const updatedTags = selectedTags.map((t) =>
+      const updatedTags = selectedTags.map((t: any) =>
         t === editableTag ? inputValue : t
       );
       addTag(inputValue);
@@ -65,7 +51,7 @@ const TagsInput = () => {
   return (
     <div className="flex flex-row h-min">
       <div className="flex  flex-wrap">
-        {selectedTags.map((tag) => (
+        {selectedTags.map((tag: any) => (
           <span
             key={tag}
             onClick={() => editTag(tag)}

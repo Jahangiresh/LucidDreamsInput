@@ -5,7 +5,7 @@ const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://652f91320b8d8ddac0b2b62b.mockapi.io",
   }),
-  endpoints: (builder) => ({
+  endpoints: (builder:any) => ({
     getAutocomplete: builder.query({
       query: () => "autocomplete",
     }),
